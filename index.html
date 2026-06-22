@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cronômetro de Objetivos</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+}
+
+.container{
+    width:90%;
+    max-width:800px;
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    border-radius:20px;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.botoes{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.botoes button{
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:white;
+    color:#4f46e5;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.botoes button:hover{
+    transform:translateY(-3px);
+    background:#ddd;
+}
+
+.conteudo{
+    display:none;
+    text-align:center;
+}
+
+.conteudo.ativo{
+    display:block;
+}
+
+.tempo{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+.caixa{
+    background:rgba(255,255,255,0.15);
+    padding:15px;
+    border-radius:12px;
+    min-width:90px;
+}
+
+.numero{
+    font-size:2rem;
+    font-weight:bold;
+}
+
+.label{
+    font-size:0.9rem;
+}
+
+.progresso{
+    width:100%;
+    height:12px;
+    background:rgba(255,255,255,0.2);
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:25px;
+}
+
+.barra{
+    height:100%;
+    width:45%;
+    background:#22c55e;
+    animation:carregar 5s infinite alternate;
+}
+
+@keyframes carregar{
+    from{width:20%;}
+    to{width:85%;}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>📚 Estudar 4 Cursos na Alura</h1>
+
+    <div class="botoes">
+        <button onclick="mostrarAba(0)">HTML</button>
+        <button onclick="mostrarAba(1)">CSS</button>
+        <button onclick="mostrarAba(2)">JavaScript</button>
+        <button onclick="mostrarAba(3)">React</button>
+    </div>
+
+    <!-- ABA 1 -->
+    <div class="conteudo ativo" id="aba0">
+        <h2>Criar 5 projetos em HTML</h2>
+        <p>Tempo para completar o objetivo</p>
+
+        <div class="tempo">
+            <div class="caixa"><div class="numero" id="dias0">0</div><div class="label">Dias</div></div>
+            <div class="caixa"><div class="numero" id="horas0">0</div><div class="label">Horas</div></div>
+            <div class="caixa"><div class="numero" id="min0">0</div><div class="label">Min</div></div>
+            <div class="caixa"><div class="numero" id="seg0">0</div><div class="label">Seg</div></div>
+        </div>
+
+        <div class="progresso"><div class="barra"></div></div>
+    </div>
+
+    <!-- ABA 2 -->
+    <div class="conteudo" id="aba1">
+        <h2>Dominar Flexbox e Grid</h2>
+        <p>Tempo para completar o objetivo</p>
+
+        <div class="tempo">
+            <div class="caixa"><div class="numero" id="dias1">0</div><div class="label">Dias</div></div>
+            <div class="caixa"><div class="numero" id="horas1">0</div><div class="label">Horas</div></div>
+            <div class="caixa"><div class="numero" id="min1">0</div><div class="label">Min</div></div>
+            <div class="caixa"><div class="numero" id="seg1">0</div><div class="label">Seg</div></div>
+        </div>
+
+        <div class="progresso"><div class="barra"></div></div>
+    </div>
+
+    <!-- ABA 3 -->
+    <div class="conteudo" id="aba2">
+        <h2>Criar 5 projetos em JavaScript</h2>
+        <p>Tempo para completar o objetivo</p>
+
+        <div class="tempo">
+            <div class="caixa"><div class="numero" id="dias2">0</div><div class="label">Dias</div></div>
+            <div class="caixa"><div class="numero" id="horas2">0</div><div class="label">Horas</div></div>
+            <div class="caixa"><div class="numero" id="min2">0</div><div class="label">Min</div></div>
+            <div class="caixa"><div class="numero" id="seg2">0</div><div class="label">Seg</div></div>
+        </div>
+
+        <div class="progresso"><div class="barra"></div></div>
+    </div>
+
+    <!-- ABA 4 -->
+    <div class="conteudo" id="aba3">
+        <h2>Aprender React</h2>
+        <p>Tempo para completar o objetivo</p>
+
+        <div class="tempo">
+            <div class="caixa"><div class="numero" id="dias3">0</div><div class="label">Dias</div></div>
+            <div class="caixa"><div class="numero" id="horas3">0</div><div class="label">Horas</div></div>
+            <div class="caixa"><div class="numero" id="min3">0</div><div class="label">Min</div></div>
+            <div class="caixa"><div class="numero" id="seg3">0</div><div class="label">Seg</div></div>
+        </div>
+
+        <div class="progresso"><div class="barra"></div></div>
+    </div>
+
+</div>
+
+<script>
+
+// Datas de conclusão dos objetivos
+const tempos = [
+    new Date("2026-12-31 23:59:59"),
+    new Date("2026-11-30 23:59:59"),
+    new Date("2026-10-15 23:59:59"),
+    new Date("2026-09-01 23:59:59")
+];
+
+function calculaTempo(dataObjetivo){
+
+    const agora = new Date();
+    const diferenca = dataObjetivo - agora;
+
+    const dias = Math.floor(diferenca / (1000*60*60*24));
+
+    const horas = Math.floor(
+        (diferenca % (1000*60*60*24))
+        /(1000*60*60)
+    );
+
+    const minutos = Math.floor(
+        (diferenca % (1000*60*60))
+        /(1000*60)
+    );
+
+    const segundos = Math.floor(
+        (diferenca % (1000*60))
+        /1000
+    );
+
+    return [dias, horas, minutos, segundos];
+}
+
+function atualizaCronometro(){
+
+    for(let i = 0; i < tempos.length; i++){
+
+        const tempo = calculaTempo(tempos[i]);
+
+        document.getElementById("dias"+i).textContent = tempo[0];
+        document.getElementById("horas"+i).textContent = tempo[1];
+        document.getElementById("min"+i).textContent = tempo[2];
+        document.getElementById("seg"+i).textContent = tempo[3];
+    }
+}
+
+function mostrarAba(indice){
+
+    const abas = document.querySelectorAll(".conteudo");
+
+    abas.forEach(aba=>{
+        aba.classList.remove("ativo");
+    });
+
+    document.getElementById("aba"+indice)
+            .classList.add("ativo");
+}
+
+atualizaCronometro();
+setInterval(atualizaCronometro,1000);
+
+</script>
+
+</body>
+</html>
